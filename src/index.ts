@@ -1,19 +1,19 @@
-import yargs, { Arguments } from "yargs";
-import { encrypt, decrypt } from "./RC4";
+import yargs, { Arguments } from 'yargs';
+import { encrypt, decrypt } from './RC4';
 
 (async () => {
   const argv: Arguments = await yargs(process.argv)
-    .option("k", {
-      alias: "key",
-      describe: "暗号化キー",
+    .option('k', {
+      alias: 'key',
+      describe: '暗号化キー',
       demandOption: true,
-      type: "string",
+      type: 'string',
     })
-    .option("m", {
-      alias: "message",
-      describe: "暗号化するメッセージ",
+    .option('m', {
+      alias: 'message',
+      describe: '暗号化するメッセージ',
       demandOption: true,
-      type: "string",
+      type: 'string',
     }).argv;
 
   const key: string = argv.key as string;
