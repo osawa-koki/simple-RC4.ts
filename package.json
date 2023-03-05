@@ -1,0 +1,8 @@
+{
+  "name": "simple-rc4-ts",
+  "version": "1.0.0",
+  "main": "./src/index.js",
+  "repository": "https://github.com/osawa-koki/simple-RC4.ts.git",
+  "author": "osawa-koki <github@osawa.dev>",
+  "license": "Apache-2.0"
+}
