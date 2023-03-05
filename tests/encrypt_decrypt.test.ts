@@ -1,7 +1,8 @@
-import { encrypt, decrypt } from "../src/RC4";
+import { encrypt, decrypt } from '../src/RC4';
 
 const generateRandomString = (length: number): string => {
-  const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  const charset =
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let result = '';
   for (let i = 0; i < length; i++) {
     result += charset.charAt(Math.floor(Math.random() * charset.length));
