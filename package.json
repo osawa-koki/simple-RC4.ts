@@ -9,7 +9,7 @@
     "dev": "ts-node-dev ./src/index.ts",
     "start": "nodemon --exec ts-node ./src/index.ts",
     "lint": "eslint --ext .ts ./src --fix --max-warnings 0",
-    "prettify": "prettier --write ./**/*.ts",
+    "prettify": "prettier --write ./**/*.{ts,js,json}",
     "test": "jest"
   },
   "devDependencies": {
