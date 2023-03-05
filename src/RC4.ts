@@ -39,7 +39,7 @@ export function encrypt(data: string, key: string): string {
 export function decrypt(data: string, key: string): string {
   const _data = new Uint8Array(
     atob(data)
-      .split('')
+      .split("")
       .map((char) => char.charCodeAt(0))
   );
   const _key = new Uint8Array(new TextEncoder().encode(key));
