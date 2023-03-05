@@ -5,6 +5,10 @@
   "repository": "https://github.com/osawa-koki/simple-RC4.ts.git",
   "author": "osawa-koki <github@osawa.dev>",
   "license": "Apache-2.0",
+  "scripts": {
+    "dev": "nodemon --exec ts-node ./src/index.ts",
+    "build": "tsc"
+  },
   "devDependencies": {
     "@types/node": "^18.14.6",
     "nodemon": "^2.0.21",
