@@ -1,3 +1,5 @@
+import { Buffer } from 'buffer';
+
 function KSA(key: number[]): number[] {
   const S = new Array(256);
   for (let i = 0; i < 256; i++) {
@@ -33,12 +35,13 @@ export function encrypt(data: string, key: string): string {
   for (let i = 0; i < _data.length; i++) {
     result[i] = _data[i] ^ gen[i];
   }
-  return btoa(String.fromCharCode(...result));
+  return Buffer.from(String.fromCharCode(...result)).toString('base64');
 }
 
 export function decrypt(data: string, key: string): string {
   const _data = new Uint8Array(
-    atob(data)
+    Buffer.from(data, 'base64')
+      .toString()
       .split('')
       .map((char) => char.charCodeAt(0))
   );
