@@ -1,4 +1,3 @@
-
 function KSA(key: number[]): number[] {
   const S = new Array(256);
   for (let i = 0; i < 256; i++) {
@@ -38,7 +37,11 @@ export function encrypt(data: string, key: string): string {
 }
 
 export function decrypt(data: string, key: string): string {
-  const _data = new Uint8Array(atob(data).split('').map(char => char.charCodeAt(0)));
+  const _data = new Uint8Array(
+    atob(data)
+      .split('')
+      .map((char) => char.charCodeAt(0))
+  );
   const _key = new Uint8Array(new TextEncoder().encode(key));
   const S = KSA(Array.from(_key));
   const gen = PRGA(Array.from(S));

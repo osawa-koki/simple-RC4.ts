@@ -14,8 +14,7 @@ import { encrypt, decrypt } from './RC4';
       describe: '暗号化するメッセージ',
       demandOption: true,
       type: 'string',
-    })
-    .argv;
+    }).argv;
 
   const key: string = argv.key as string;
   const message: string = argv.message as string;
@@ -28,5 +27,4 @@ import { encrypt, decrypt } from './RC4';
 
   console.log(`encrypt: ${encryptResult}`);
   console.log(`decrypt: ${decryptResult}`);
-
 })();
