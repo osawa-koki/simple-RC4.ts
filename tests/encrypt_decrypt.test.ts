@@ -1,28 +1,38 @@
 import { encrypt, decrypt } from "../src/RC4";
 
-describe("RC4 encryption and decryption", () => {
-  const message = "hello world";
-  const key1 = "my secret key";
-  const key2 = "another secret key";
+const generateRandomString = (length: number): string => {
+  const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += charset.charAt(Math.floor(Math.random() * charset.length));
+  }
+  return result;
+};
 
-  it("should encrypt and decrypt the message correctly with the same key", () => {
-    const encrypted = encrypt(message, key1);
-    const decrypted = decrypt(encrypted, key1);
-    expect(decrypted).toEqual(message);
+describe('RC4', () => {
+  it('should encrypt and decrypt message with the same key', () => {
+    for (let i = 0; i < 100; i++) {
+      const message = generateRandomString(20);
+      const key = generateRandomString(10);
+      const encryptedMessage = encrypt(message, key);
+      const decryptedMessage = decrypt(encryptedMessage, key);
+
+      expect(decryptedMessage).toEqual(message);
+    }
   });
 
-  it("should not decrypt the message correctly with a different key", () => {
-    const encrypted = encrypt(message, key1);
-    const decrypted = decrypt(encrypted, key2);
-    expect(decrypted).not.toEqual(message);
-  });
+  it('should not decrypt message with a different key', () => {
+    for (let i = 0; i < 100; i++) {
+      const message = generateRandomString(20);
+      const key = generateRandomString(10);
+      const encryptedMessage = encrypt(message, key);
+      const differentKey = generateRandomString(10);
+      if (differentKey === key) {
+        continue;
+      }
+      const decryptedMessage = decrypt(encryptedMessage, differentKey);
 
-  it("should encrypt and decrypt random messages correctly with the same key", () => {
-    for (let i = 0; i < 10; i++) {
-      const randomMessage = Math.random().toString(36).substring(2);
-      const encrypted = encrypt(randomMessage, key1);
-      const decrypted = decrypt(encrypted, key1);
-      expect(decrypted).toEqual(randomMessage);
+      expect(decryptedMessage).not.toEqual(message);
     }
   });
 });
